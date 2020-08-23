@@ -1,13 +1,11 @@
-
-const express = require("express");
-const Apiserver = require("./api/Apiserver.js");
-
-Apiserver.use(express.json());
+const express = require("express")
+const server = require("./api/server.js");
+const accountsRouter = require('./accounts/accounts-router')
 const PORT = process.env.PORT || 5000;
 
 
-const server = express();
-server.use(Apiserver)
+server.use(express.json())
+server.use(accountsRouter)
 
 server.use((err, req, res, next)=>{
   console.log(err)
